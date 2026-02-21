@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Lab</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header class="app-header container">
+        <h1 class="app-title">Binary Lab</h1>
+        <p class="app-subtitle">
+            Convert human-readable text into 32-bit or 64-bit binary architecture blocks
+        </p>
+    </header>
+
+    <main class="app-main container">
+        <section class="app-layout">
+
+            <!-- LEFT COLUMN -->
+            <section class="input-section">
+                <div class="input-card">
+                    
+                    <label for="textInput" class="input-label"></label>
+                    <textarea 
+                        id="textInput" 
+                        class="text-input" 
+                        placeholder="Type your text here..."
+                        rows="10"
+                    ></textarea>
+
+                    <div class="architecture-toggle">
+                        <span class="toggle-label">Select Architecture:</span>
+                        <div class="toggle-buttons">
+                            <button type="button" class="toggle-btn active" data-arch="32">
+                                32-bit
+                            </button>
+                            <button type="button" class="toggle-btn" data-arch="64">
+                                64-bit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="convert-action">
+                        <button type="button" class="convert-button">
+                            Convert
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN -->
+            <section class="output-section">
+                <div class="output-card">
+
+                    <header class="output-header">
+                        <h2 class="output-title">Binary Output</h2>
+                    </header>
+
+                    <div class="binary-output-container">
+                        <pre class="binary-output" id="binaryOutput"></pre>
+                    </div>
+
+                    <section class="stats-section">
+                        <div class="stats-grid">
+
+                            <div class="stat-item">
+                                <h3 class="stat-value" id="statCharacters">0</h3>
+                                <p class="stat-label">Total Characters</p>
+                            </div>
+
+                            <div class="stat-item">
+                                <h3 class="stat-value" id="statBits">0</h3>
+                                <p class="stat-label">Total Bits</p>
+                            </div>
+
+                            <div class="stat-item">
+                                <h3 class="stat-value" id="statBlocks">0</h3>
+                                <p class="stat-label">Total Memory Blocks</p>
+                            </div>
+
+                            <div class="stat-item">
+                                <h3 class="stat-value" id="statArchitecture">32-bit</h3>
+                                <p class="stat-label">Selected Architecture</p>
+                            </div>
+
+                        </div>
+                        <script src="script.js"></script>
+
+                    </section>
+
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="app-footer container">
+        <p class="footer-text">© Binary Lab</p>
+    </footer>
+
+</body>
+</html>

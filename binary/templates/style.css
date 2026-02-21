@@ -1,0 +1,289 @@
+/* ===============================
+   Neon Binary Lab - Cyberpunk CSS
+   =============================== */
+
+/* Google Fonts (Import in HTML if needed)
+   Poppins / Inter for UI
+   JetBrains Mono for binary output
+*/
+
+/* ---------- Root Variables ---------- */
+
+
+.output-container {
+    background: #1A1A24;
+}
+
+
+
+:root {
+    --bg-dark: #0F0F14;
+    --card-bg: rgba(26, 26, 36, 0.75);
+
+    --cyan: #00F5FF;
+    --purple: #8A2BE2;
+    --pink: #FF2E88;
+
+    --text-primary: #F5F5F5;
+    --text-secondary: #A0A0B5;
+
+    --radius-lg: 20px;
+    --radius-md: 16px;
+
+    --transition: 0.3s ease;
+}
+
+/* ---------- Global Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ---------- Animated Gradient Background ---------- */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(45deg, var(--cyan), var(--purple), var(--pink));
+    background-size: 300% 300%;
+    animation: gradientMove 15s ease infinite alternate;
+    opacity: 0.06;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: left; }
+    100% { background-position: right; }
+}
+
+/* ---------- Container ---------- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.app-title {
+    font-size: 3rem;
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-subtitle {
+    margin-top: 10px;
+    color: var(--text-secondary);
+}
+
+/* ---------- Layout ---------- */
+.app-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* ---------- Glass Card ---------- */
+.input-card,
+.output-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.2);
+    transition: var(--transition);
+}
+
+.input-card:hover,
+.output-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(255, 46, 136, 0.3);
+}
+
+/* ---------- Textarea ---------- */
+.text-input {
+    width: 100%;
+    background: #111118;
+    border: 1px solid var(--purple);
+    border-radius: var(--radius-md);
+    padding: 15px;
+    color: var(--text-primary);
+    resize: none;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+/* ---------- Toggle Buttons ---------- */
+.architecture-toggle {
+    margin-top: 20px;
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 50px;
+    border: 2px solid var(--purple);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px var(--purple);
+}
+
+.toggle-btn.active {
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    box-shadow: 0 0 20px var(--purple);
+    border: none;
+}
+
+/* ---------- Convert Button ---------- */
+.convert-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+    color: #fff;
+    transition: var(--transition);
+}
+
+.convert-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--pink);
+}
+
+/* ---------- Output Section ---------- */
+.output-card {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Binary Output ---------- */
+.binary-output-container {
+    margin-top: 20px;
+    background: #111118;
+    border: 1px solid var(--cyan);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.binary-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--cyan);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ---------- Stats ---------- */
+.stats-section {
+    margin-top: 25px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.stat-item {
+    background: #1A1A24;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--purple);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    box-shadow: 0 0 15px var(--purple);
+    transform: translateY(-3px);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: var(--cyan);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-title {
+        font-size: 2rem;
+    }
+
+    .toggle-buttons {
+        flex-direction: column;
+    }
+
+    .toggle-btn,
+    .convert-button {
+        width: 100%;
+    }
+}
